@@ -5,7 +5,8 @@ console.log('Portfolio script loaded successfully.');
 
 const hamburger = document.querySelector('.hamburger');
 const body = document.body;
-const navLinks = document.querySelectorAll('nav a');
+const hashLinks = document.querySelectorAll('a[href^="#"]');
+const sections = document.querySelectorAll('main section[id]');
 
 if (hamburger) {
   hamburger.addEventListener('click', () => {
@@ -14,9 +15,8 @@ if (hamburger) {
   });
 }
 
-navLinks.forEach(link => {
+hashLinks.forEach(link => {
   link.addEventListener('click', (e) => {
-    // smooth scroll to section and close mobile nav when open
     const href = link.getAttribute('href');
     if (href && href.startsWith('#')) {
       e.preventDefault();
@@ -30,3 +30,25 @@ navLinks.forEach(link => {
     }
   });
 });
+
+if ('IntersectionObserver' in window && sections.length > 0) {
+  const navObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const sectionId = entry.target.id;
+        hashLinks.forEach((link) => {
+          const href = link.getAttribute('href');
+          link.classList.toggle('active', href === `#${sectionId}`);
+        });
+      });
+    },
+    {
+      root: null,
+      rootMargin: '-40% 0px -55% 0px',
+      threshold: 0,
+    }
+  );
+
+  sections.forEach((section) => navObserver.observe(section));
+}
