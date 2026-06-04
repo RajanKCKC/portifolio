@@ -84,3 +84,44 @@ if (darkModeToggle) {
     localStorage.setItem('darkMode', String(isCurrentlyDark));
   });
 }
+
+const typedText = document.getElementById('typed-text');
+const taglinePhrases = [
+  'Web developer from Dang, Nepal.',
+  'Building clean web experiences.',
+  'Learning every day through code.',
+];
+let currentPhrase = 0;
+let currentChar = 0;
+let isDeleting = false;
+
+function typeTagline() {
+  if (!typedText) return;
+
+  const phrase = taglinePhrases[currentPhrase];
+  if (!isDeleting) {
+    typedText.textContent = phrase.slice(0, currentChar + 1);
+    currentChar += 1;
+    if (currentChar === phrase.length) {
+      isDeleting = true;
+      setTimeout(typeTagline, 1400);
+      return;
+    }
+  } else {
+    typedText.textContent = phrase.slice(0, currentChar - 1);
+    currentChar -= 1;
+    if (currentChar === 0) {
+      isDeleting = false;
+      currentPhrase = (currentPhrase + 1) % taglinePhrases.length;
+    }
+  }
+
+  const delay = isDeleting ? 50 : 120;
+  setTimeout(typeTagline, delay);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (typedText) {
+    typeTagline();
+  }
+});
