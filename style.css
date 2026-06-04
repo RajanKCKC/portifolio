@@ -272,15 +272,6 @@ section h2 {
   }
 }
 
-#projects h3 {
-  margin-top: 0;
-}
-
-#projects a,
-#contact a {
-  color: var(--accent);
-}
-
 #contact p {
   margin: 8px 0;
 }
@@ -353,4 +344,65 @@ body.dark {
 
 body.dark #dark-mode-toggle:hover {
   background: rgba(100, 181, 246, 0.2);
+}
+
+#projects h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 600px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-meta {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.project-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.language {
+  background: rgba(43, 108, 176, 0.1);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+body.dark .language {
+  background: rgba(100, 181, 246, 0.15);
+  color: #8fb8f1;
+}
+
+#projects a,
+#contact a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+#projects a:hover {
+  color: #143f6c;
+  text-decoration: underline;
+}
+
+body.dark #projects a:hover {
+  color: #a5c8ff;
 }

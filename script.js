@@ -120,8 +120,52 @@ function typeTagline() {
   setTimeout(typeTagline, delay);
 }
 
+// Fetch GitHub repositories
+const GITHUB_USERNAME = 'RajanKCKC';
+const GITHUB_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
+
+async function fetchGitHubRepos() {
+  try {
+    const response = await fetch(GITHUB_API_URL);
+    if (!response.ok) {
+      throw new Error(`GitHub API error: ${response.status}`);
+    }
+    const repos = await response.json();
+    displayProjects(repos);
+  } catch (error) {
+    console.error('Error fetching GitHub repos:', error);
+    const container = document.getElementById('projects-container');
+    if (container) {
+      container.innerHTML = '<p style="color: var(--muted);">Unable to load projects. Please try again later.</p>';
+    }
+  }
+}
+
+function displayProjects(repos) {
+  const container = document.getElementById('projects-container');
+  if (!container) return;
+
+  if (repos.length === 0) {
+    container.innerHTML = '<p style="color: var(--muted);">No public repositories found.</p>';
+    return;
+  }
+
+  container.innerHTML = repos.map(repo => `
+    <article>
+      <h3>${repo.name}</h3>
+      <p>${repo.description || 'No description provided.'}</p>
+      <div class="project-meta">
+        <span class="language">${repo.language || 'N/A'}</span>
+        <span class="stars">⭐ ${repo.stargazers_count}</span>
+      </div>
+      <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+    </article>
+  `).join('');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   if (typedText) {
     typeTagline();
   }
+  fetchGitHubRepos();
 });
