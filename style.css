@@ -39,6 +39,11 @@ header {
   box-shadow: 0 8px 24px rgba(43, 108, 176, 0.08);
 }
 
+body.dark header {
+  background-color: #1f2937;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
 header h1 {
   margin: 0;
   font-size: clamp(2rem, 3vw, 3rem);
@@ -56,8 +61,59 @@ header p {
   object-fit: cover;
   border-radius: 50%;
   display: block;
-  margin: 0 auto 18px;
+  margin: 0 auto;
   border: 4px solid rgba(43, 108, 176, 0.18);
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(120px, 160px) 1fr;
+  gap: 24px;
+  align-items: center;
+  padding-top: 24px;
+}
+
+.hero-text {
+  text-align: left;
+}
+
+.hero-text p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  font-size: 0.86rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+body.dark .eyebrow {
+  color: #8fb8f1;
 }
 
 .hamburger {
@@ -90,16 +146,20 @@ nav {
   top: 0;
   z-index: 100;
   background-color: #eef6ff;
-  padding: 12px 0 0;
+  padding: 8px 0 12px;
+}
+
+body.dark nav {
+  background-color: #111827;
 }
 
 nav ul {
   list-style: none;
   padding: 0;
-  margin: 24px 0 0;
+  margin: 0;
   display: flex;
   justify-content: center;
-  gap: 18px;
+  gap: 24px;
   flex-wrap: wrap;
 }
 
@@ -114,6 +174,15 @@ nav a:hover,
 nav a.active {
   color: #143f6c;
   text-decoration: underline;
+}
+
+body.dark nav a {
+  color: var(--surface);
+}
+
+body.dark nav a:hover,
+body.dark nav a.active {
+  color: #a5c8ff;
 }
 
 section {
@@ -242,4 +311,32 @@ footer {
 
 #scroll-to-top:active {
   transform: translateY(0);
+}
+
+body.dark {
+  --bg: #1a1a1a;
+  --surface: #2d2d2d;
+  --text: #e8e8e8;
+  --muted: #a0a0a0;
+  --accent: #64b5f6;
+  --border: #444444;
+}
+
+#dark-mode-toggle {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+  display: inline-block;
+}
+
+#dark-mode-toggle:hover {
+  background: rgba(43, 108, 176, 0.1);
+}
+
+body.dark #dark-mode-toggle:hover {
+  background: rgba(100, 181, 246, 0.2);
 }

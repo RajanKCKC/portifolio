@@ -71,3 +71,16 @@ if (scrollToTopBtn) {
     });
   });
 }
+
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+if (darkModeToggle) {
+  const isDarkMode = localStorage.getItem('darkMode') === 'true';
+  if (isDarkMode) {
+    document.body.classList.add('dark');
+  }
+
+  darkModeToggle.addEventListener('click', () => {
+    const isCurrentlyDark = document.body.classList.toggle('dark');
+    localStorage.setItem('darkMode', String(isCurrentlyDark));
+  });
+}

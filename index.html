@@ -8,14 +8,18 @@
 </head>
 <body>
   <header>
-    <img src="pic.jpg" alt="Rajan KC" class="profile-photo">
-    <h1>Rajan KC</h1>
-    <p>Web developer from Dang, Nepal.</p>
-    <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-navigation">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <div class="header-top">
+      <a href="#" class="logo">Rajan KC</a>
+      <div class="header-actions">
+        <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
     <nav>
       <ul id="main-navigation">
         <li><a href="#about">About</a></li>
@@ -24,6 +28,15 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
+
+    <div class="hero">
+      <img src="pic.jpg" alt="Rajan KC" class="profile-photo">
+      <div class="hero-text">
+        <p class="eyebrow">Web developer from Dang, Nepal</p>
+        <h1>Rajan KC</h1>
+        <p>Hi, I'm Rajan KC from Dang, Nepal. I'm studying +2 Management at Gorkha Secondary School and passionate about web development.</p>
+      </div>
+    </div>
   </header>
 
   <main>
