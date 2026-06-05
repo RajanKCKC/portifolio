@@ -228,6 +228,16 @@ section h2 {
   border-radius: 999px;
   color: var(--text);
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  object-fit: contain;
 }
 
 #projects {
