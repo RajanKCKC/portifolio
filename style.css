@@ -282,10 +282,6 @@ section h2 {
   }
 }
 
-#contact p {
-  margin: 8px 0;
-}
-
 footer {
   padding: 24px 0 40px;
   text-align: center;
@@ -415,4 +411,93 @@ body.dark .language {
 
 body.dark #projects a:hover {
   color: #a5c8ff;
+}
+
+/* Education section */
+#education p {
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+
+.education-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.education-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.education-item h3 {
+  margin: 0 0 6px;
+}
+
+.edu-meta {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+@media (min-width: 700px) {
+  .education-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+#contact p {
+  margin: 0 0 14px;
+  max-width: 680px;
+  color: var(--muted);
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.contact-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 8px 24px rgba(43, 108, 176, 0.08);
+}
+
+.contact-card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.contact-card p {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.contact-card a {
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.contact-card a:hover {
+  color: #143f6c;
+}
+
+body.dark .contact-card {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 700px) {
+  .contact-cards {
+    grid-template-columns: 1fr;
+  }
 }
