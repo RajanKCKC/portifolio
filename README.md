@@ -73,6 +73,3 @@ The site is intentionally lightweight and client-side only. Key decisions:
 - If the projects list is empty, confirm the GitHub username in `script.js` and that the repositories are public.
 - If the GitHub API fails due to rate limits, consider using a server-side proxy or authenticated requests.
 
----
-
-If you want, I can also add a GIF screenshot, host the demo on GitHub Pages, or convert icons to official SVG brand logos.
